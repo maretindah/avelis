@@ -1,5 +1,6 @@
+import 'package:avelis/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const AvelisApp());
@@ -10,7 +11,7 @@ class AvelisApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Avelis',
       debugShowCheckedModeBanner: false,
       home: const HomeScreen(),

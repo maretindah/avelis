@@ -57,7 +57,7 @@ class DetailScreen extends StatelessWidget {
 
             ClipRRect(
               borderRadius: BorderRadius.circular(28),
-              child: Image.network(
+              child: Image.asset(
                 image,
                 height: 340,
                 width: double.infinity,

@@ -17,8 +17,7 @@ class HomeScreen extends StatelessWidget {
       'name': 'Pink Manis',
       'price': 'Rp 120.000',
       'rating': '4.8',
-      'image':
-          'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500',
+      'image': 'assets/images/pink-manis.jpg',
       'tags': ['Minimalis', 'Pink', 'Glossy'],
       'description':
           'Desain nail art bernuansa pink lembut yang cocok untuk tampilan harian maupun acara santai.',
@@ -30,8 +29,7 @@ class HomeScreen extends StatelessWidget {
       'name': 'Kilau Aurora',
       'price': 'Rp 130.000',
       'rating': '4.9',
-      'image':
-          'https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=500',
+      'image': 'assets/images/kilau-aurora.jpg',
       'tags': ['Glitter', 'Aurora', 'Elegan'],
       'description':
           'Desain dengan efek kilau aurora yang memberikan tampilan mewah dan menarik.',
@@ -43,8 +41,7 @@ class HomeScreen extends StatelessWidget {
       'name': 'Nude Elegan',
       'price': 'Rp 110.000',
       'rating': '4.7',
-      'image':
-          'https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=500',
+      'image': 'assets/images/nude-elegan.png',
       'tags': ['Nude', 'Elegan', 'Natural'],
       'description':
           'Desain warna nude yang simpel, rapi, dan cocok untuk tampilan formal.',
@@ -56,8 +53,7 @@ class HomeScreen extends StatelessWidget {
       'name': 'French Chic',
       'price': 'Rp 125.000',
       'rating': '4.8',
-      'image':
-          'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500',
+      'image': 'assets/images/french-chic.jpg',
       'tags': ['French', 'Classic', 'Clean'],
       'description':
           'Model french tip klasik dengan sentuhan modern yang elegan dan timeless.',
@@ -69,8 +65,7 @@ class HomeScreen extends StatelessWidget {
       'name': 'Galaxy Night',
       'price': 'Rp 145.000',
       'rating': '4.9',
-      'image':
-          'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500',
+      'image': 'assets/images/galaxy.jpg',
       'tags': ['Galaxy', 'Dark', 'Sparkle'],
       'description':
           'Inspirasi galaksi malam dengan perpaduan warna gelap dan efek sparkle yang unik.',
@@ -82,8 +77,7 @@ class HomeScreen extends StatelessWidget {
       'name': 'Peach Blossom',
       'price': 'Rp 118.000',
       'rating': '4.7',
-      'image':
-          'https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=500',
+      'image': 'assets/images/pink-blossom.jpg',
       'tags': ['Peach', 'Floral', 'Soft'],
       'description':
           'Desain warna peach lembut dengan detail bunga kecil yang manis dan feminin.',
@@ -220,7 +214,7 @@ class HomeScreen extends StatelessWidget {
                     height: 72,
                     width: 72,
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.25),
+                      color: Colors.white.withValues(alpha: 0.25),
                       borderRadius: BorderRadius.circular(24),
                     ),
                     child: const Icon(
@@ -247,41 +241,57 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 16),
 
             SizedBox(
-              height: 95,
+              height: 120,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
                   final item = categories[index];
 
+                  final isSelected = index == 0;
+
                   return Container(
-                    width: 82,
+                    width: 78,
                     margin: const EdgeInsets.only(right: 14),
-                    decoration: BoxDecoration(
-                      color: index == 0
-                          ? const Color(0xFFE284A5)
-                          : Colors.white,
-                      borderRadius: BorderRadius.circular(22),
-                    ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
-                          item['icon'],
-                          size: 26,
-                          color: index == 0
-                              ? Colors.white
-                              : const Color(0xFF6B4D5F),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          item['name'],
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                            color: index == 0
+                        Container(
+                          width: 68,
+                          height: 68,
+                          decoration: BoxDecoration(
+                            color: isSelected
+                                ? const Color(0xFFE284A5)
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withValues(alpha: 0.05),
+                                blurRadius: 10,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: Icon(
+                            item['icon'],
+                            size: 28,
+                            color: isSelected
                                 ? Colors.white
                                 : const Color(0xFF6B4D5F),
+                          ),
+                        ),
+
+                        const SizedBox(height: 10),
+
+                        Text(
+                          item['name'],
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            height: 1.3,
+                            color: Color(0xFF6B4D5F),
                           ),
                         ),
                       ],
@@ -290,7 +300,6 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
             ),
-
             const SizedBox(height: 28),
 
             Text(
@@ -345,7 +354,7 @@ class HomeScreen extends StatelessWidget {
                             borderRadius: const BorderRadius.vertical(
                               top: Radius.circular(22),
                             ),
-                            child: Image.network(
+                            child: Image.asset(
                               nail['image']!,
                               height: 140,
                               width: double.infinity,
